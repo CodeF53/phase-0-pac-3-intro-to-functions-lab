@@ -15,9 +15,10 @@ lesson that we haven't encountered before. Don't worry, we'll walk you through
 them.
 
 If you haven't already, fork and clone this lab into your local environment.
-Navigate into its directory in the terminal, then run `code .` to open the files
-in Visual Studio Code. (If you are using a different text editor, the command
-will be different.)
+Remember to **fork** a copy into your GitHub account first, then **clone** from
+that copy. Navigate into its directory in the terminal, then run `code .` to
+open the files in Visual Studio Code. (If you are using a different code editor,
+the command will be different.)
 
 ### Code-Along
 
@@ -44,7 +45,7 @@ else (usually multiple someones) wrote for our use. The code above makes the
 libraries available inside our test environment, which enables us to run the
 tests.
 
-If you go to `test/index-test.js`, you'll see
+If you go to `test/indexTest.js`, you'll see
 
 ```js
 describe("shout(string)", function () {
@@ -84,11 +85,12 @@ per function, but let's start with this one.
 
 ### Running the Tests
 
-To run the tests, run `learn test` in the terminal. The first output you'll see
-will look something like this:
+To run the tests, first run `npm install` in the terminal to install the
+dependencies, then run `npm test`. The first output you'll see will look
+something like this:
 
 ```console
-$ learn test
+$ npm test
 > java-script-intro-to-functions-lab@0.1.0 test
 > mocha --timeout 5000 -R mocha-multi --reporter-options spec=-,json=.results.json
 
@@ -118,43 +120,43 @@ $ learn test
   1) shout(string)
        receives one argument and returns it in all caps:
      ReferenceError: shout is not defined
-      at Context.<anonymous> (test/index-test.js:4:5)
+      at Context.<anonymous> (test/indexTest.js:4:5)
       at processImmediate (internal/timers.js:461:21)
 
   2) whisper(string)
        receives one argument and returns it in all lowercase:
      ReferenceError: whisper is not defined
-      at Context.<anonymous> (test/index-test.js:10:5)
+      at Context.<anonymous> (test/indexTest.js:10:5)
       at processImmediate (internal/timers.js:461:21)
 
   3) logShout(string)
        takes a string argument and logs it in all caps using console.log():
      ReferenceError: logShout is not defined
-      at Context.<anonymous> (test/index-test.js:18:5)
+      at Context.<anonymous> (test/indexTest.js:18:5)
       at processImmediate (internal/timers.js:461:21)
 
   4) logWhisper(string)
        takes a string argument and logs it in all lowercase using console.log():
      ReferenceError: logWhisper is not defined
-      at Context.<anonymous> (test/index-test.js:30:5)
+      at Context.<anonymous> (test/indexTest.js:30:5)
       at processImmediate (internal/timers.js:461:21)
 
   5) sayHiToHeadphonedRoommate(string)
        returns "I can't hear you!" if `string` is lowercase:
      ReferenceError: sayHiToHeadphonedRoommate is not defined
-      at Context.<anonymous> (test/index-test.js:40:5)
+      at Context.<anonymous> (test/indexTest.js:40:5)
       at processImmediate (internal/timers.js:461:21)
 
   6) sayHiToHeadphonedRoommate(string)
        returns "YES INDEED!" if `string` is uppercase:
      ReferenceError: sayHiToHeadphonedRoommate is not defined
-      at Context.<anonymous> (test/index-test.js:44:5)
+      at Context.<anonymous> (test/indexTest.js:44:5)
       at processImmediate (internal/timers.js:461:21)
 
   7) sayHiToHeadphonedRoommate(string)
        returns "I would love to!" if `string` is "Let's have dinner together!"`:
      ReferenceError: sayHiToHeadphonedRoommate is not defined
-      at Context.<anonymous> (test/index-test.js:48:5)
+      at Context.<anonymous> (test/indexTest.js:48:5)
       at processImmediate (internal/timers.j
 ```
 
@@ -185,7 +187,7 @@ $ npm test
   1) shout(string)
        receives one argument and returns it in all caps:
      ReferenceError: shout is not defined
-      at Context.<anonymous> (test/index-test.js:4:5)
+      at Context.<anonymous> (test/indexTest.js:4:5)
       at processImmediate (internal/timers.js:461:21)
 
 
@@ -201,11 +203,11 @@ at that first error:
   1) shout(string)
        receives one argument and returns it in all caps:
      ReferenceError: shout is not defined
-      at Context.<anonymous> (test/index-test.js:4:5)
+      at Context.<anonymous> (test/indexTest.js:4:5)
       at processImmediate (internal/timers.js:461:21)
 ```
 
-The output above comes from this test in `index-test.js`:
+The output above comes from this test in `indexTest.js`:
 
 ```js
 describe("shout(string)", function () {
@@ -235,7 +237,7 @@ we need to do:
      Error: Expected undefined to equal 'HELLO'
       at assert (node_modules/expect/lib/assert.js:29:9)
       at Expectation.toEqual (node_modules/expect/lib/Expectation.js:81:30)
-      at Context.<anonymous> (test/index-test.js:4:28)
+      at Context.<anonymous> (test/indexTest.js:4:28)
       at processImmediate (internal/timers.js:461:21)
 ```
 
@@ -284,7 +286,7 @@ and run our tests again. We get:
   1) whisper(string)
        receives one argument and returns it in all lowercase:
      ReferenceError: whisper is not defined
-      at Context.<anonymous> (test/index-test.js:10:5)
+      at Context.<anonymous> (test/indexTest.js:10:5)
       at processImmediate (internal/timers.js:461:21)
 ```
 
@@ -305,7 +307,7 @@ whisper or they shout. The next test is similar to the first:
 1) whisper(string)
        receives one argument and returns it in all lowercase:
      ReferenceError: whisper is not defined
-      at Context.<anonymous> (test/index-test.js:10:5)
+      at Context.<anonymous> (test/indexTest.js:10:5)
       at processImmediate (internal/timers.js:456:21)
 ```
 
@@ -341,7 +343,7 @@ test conditions:
   together!", the function should return "I would love to!"
 
 How do we check if a string is all lowercase or all uppercase? Let's take a look
-using a REPL:
+using a REPL. Click on "Show files" and then the "index.js" file to see the code:
 
 <iframe height="400px" width="100%" src="https://replit.com/@lizbur10/InsubstantialTanInternet?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
@@ -372,6 +374,11 @@ you'll need to _call_ the function inside `index.js`. If you are just running
 tests, however, you don't need to include a function call — the tests will
 handle that for you.
 
-Good luck!
+After you have all the tests passing, remember to commit and push your changes
+up to GitHub, then submit your work to Canvas using CodeGrade. If you need a
+reminder, go back to the [Complete Your First Software Engineering
+Assignment][complete-assignment] lesson to review the process.
+
+[complete-assignment]: https://github.com/learn-co-curriculum/phase-0-completing-assignments-codegrade
 
 [replit]: https://replit.com/languages/javascript
